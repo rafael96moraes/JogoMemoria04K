@@ -54,7 +54,7 @@ class Level():
 
     def pass_level(self, passed: bool):
         if passed:
-            pygame.mixer.music.load('pass.mp3')
+            pygame.mixer.music.load('som/pass.mp3')
             pygame.mixer.music.play(0)
             self.lvl += 1
             if (self.lvl == 2):
@@ -258,11 +258,11 @@ class Deck:
                 del self.cards[_cards[0][0]]
                 del self.cards[_cards[1][0]]
                 self.cards_face_up.clear()
-                pygame.mixer.music.load('certo.mp3')
+                pygame.mixer.music.load('som/certo.mp3')
                 pygame.mixer.music.play(0)
             else:
                 self.cards_face_up.clear()
-                pygame.mixer.music.load('erro.mp3')
+                pygame.mixer.music.load('som/erro.mp3')
                 pygame.mixer.music.play(0)
 
 
@@ -307,7 +307,7 @@ class Event:
                 if (self.character.x - collison <= skill[0] <= self.character.x + collison and
                         self.character.y - collison <= skill[1] <= self.character.y + collison):
                     self.character.hp -= 1
-                    pygame.mixer.music.load('catch.mp3')
+                    pygame.mixer.music.load('som/catch.mp3')
                     pygame.mixer.music.play(0)
                     self.time_interval_hit = 0
 
@@ -428,6 +428,9 @@ def start_event(game_event: Event):
 # Background
 background = pygame.image.load('fundo.png')
 backhist = pygame.image.load('fundHistoria.png')
+backg1 = pygame.image.load('img/scenes/fundogain1.png')
+backg2 = pygame.image.load('img/scenes/fundogain2.png')
+backg3 = pygame.image.load('img/scenes/fundogain3.png')
  
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
@@ -445,7 +448,7 @@ def main_menu():
         screen.blit(background, (0,0))
 
         
-        draw_text('Menu', font, (255, 255, 255), screen, 265, 150)
+        draw_text('Aquiles', font, (255, 255, 255), screen, 255, 150)
  
         mx, my = pygame.mouse.get_pos()
         botao1 = pygame.Rect(220, 380, 180, 40)
@@ -595,7 +598,7 @@ def level1gain():
 
         #fundo
        
-        screen.blit(background, (0,0))
+        screen.blit(backg1, (0,0))
         
         draw_text('Parabens! Voce ganhou!', font, (255, 255, 255), screen, 100, 150)
  
@@ -635,7 +638,7 @@ def level2gain():
 
         #fundo
        
-        screen.blit(background, (0,0))
+        screen.blit(backg2, (0,0))
         
         draw_text('Parabens! Voce ganhou!', font, (255, 255, 255), screen, 100, 150)
  
@@ -676,7 +679,7 @@ def level3gain():
 
         #fundo
        
-        screen.blit(background, (0,0))
+        screen.blit(backg3, (0,0))
         
         draw_text('Parabens! Voce ganhou!', font, (255, 255, 255), screen, 100, 150)
  
@@ -730,5 +733,4 @@ def historia():
                     running = False
        
         pygame.display.update()
-
 main_menu()
